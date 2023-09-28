@@ -11,7 +11,4 @@ clone es-style.
 * ...
 
 
-<img src="https://media.giphy.com/media/LgR0AnXJBrO4E/giphy.gif" />
-
-
-
+![](https://github.com/Z1Epime/esWordle/blob/master/resources/catplease.gif)
