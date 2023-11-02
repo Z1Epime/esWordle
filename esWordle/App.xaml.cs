@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccess;
+using DataAccess.JSON;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -8,10 +10,11 @@ using System.Windows;
 
 namespace esWordle
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            var test = new WordAccessor().GetWords(); // TODO: change this with DependencyInjection available
+        }
     }
 }
