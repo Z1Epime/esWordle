@@ -14,7 +14,7 @@ namespace esWordle
     {
         public App()
         {
-            var test = new WordAccessor().GetWords(); // TODO: change this with DependencyInjection available
+
         }
     }
 }
