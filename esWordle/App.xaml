@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:esWordle"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="MainPageStyle">
+            <Setter Property="Button.Height" Value="100"/>
+            <Setter Property="Button.Width" Value="175"/>
+            <Setter Property="Button.Background" Value="Transparent"/>
+            <Setter Property="Button.Foreground" Value="White"/>
+            <Setter Property="Button.FontSize" Value="20"/>
+            <Setter Property="Button.BorderBrush" Value="Transparent"/>
+            <Setter Property="Button.Margin" Value="5"/>
+        </Style>
     </Application.Resources>
 </Application>

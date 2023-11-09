@@ -27,11 +27,6 @@ namespace DataAccess.JSON
         /// </summary>
         public async Task<List<Word>> GetWords()
         {
-            if (!File.Exists(fullPath))
-            {
-                await SetWords(DefaultData.DEFAULT_WORDS);
-            }
-
             string json;
             using (StreamReader r = new StreamReader(fullPath))
             {

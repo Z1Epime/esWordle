@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:esWordle"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
-    </Grid>
+        Title="MainWindow" Height="1080" Width="1920" 
+        WindowState="Maximized">
+    <DockPanel Background="DarkBlue">
+        <DockPanel DockPanel.Dock="Left" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Left">
+            <StackPanel VerticalAlignment="Bottom">
+                <Button Name="btPlay" Content="Play" Style="{StaticResource MainPageStyle}"/>
+                <Button Name="btOptions" Content="Options" Style="{StaticResource MainPageStyle}"/>
+                <Button Name="btExit" Content="Exit" Style="{StaticResource MainPageStyle}"/>
+            </StackPanel>
+        </DockPanel>
+    </DockPanel>
 </Window>
