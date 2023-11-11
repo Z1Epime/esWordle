@@ -13,14 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace esWordle
+namespace esWordle.View
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public partial class OptionsView : Page
     {
-        public MainWindow()
+        public OptionsView()
         {
             InitializeComponent();
         }
