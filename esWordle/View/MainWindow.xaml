@@ -1,0 +1,41 @@
+﻿<Window x:Class="esWordle.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:viewmodel="clr-namespace:esWordle.ViewModel"
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="1080" Width="1920" 
+        WindowState="Maximized"
+        x:Name="RootWindow">
+    <DockPanel Background="DarkBlue">
+        <DockPanel DockPanel.Dock="Left" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Left">
+            <StackPanel VerticalAlignment="Bottom">
+                <Button Name="btPlay" Content="Play" Style="{StaticResource MainPageStyle}"/>
+                <Button Name="btOptions" Content="Options" Style="{StaticResource MainPageStyle}"/>
+                <Button Name="btExit" Content="Exit" Style="{StaticResource MainPageStyle}"/>
+                <!--#region Behavior-->
+                <behaviors:Interaction.Triggers>
+                    <behaviors:EventTrigger EventName="Click" SourceObject="{Binding ElementName=btPlay}">
+                        <behaviors:InvokeCommandAction Command="{Binding GoToGameCommand}"/>
+                    </behaviors:EventTrigger>
+                    
+                    <behaviors:EventTrigger EventName="Click" SourceObject="{Binding ElementName=btOptions}">
+                        <behaviors:InvokeCommandAction Command="{Binding GoToOptionsCommand}"/>
+                    </behaviors:EventTrigger>
+                    
+                    <behaviors:EventTrigger EventName="Click" SourceObject="{Binding ElementName=btExit}">
+                        <behaviors:InvokeCommandAction Command="{Binding ExitCommand}"/>
+                    </behaviors:EventTrigger>
+                </behaviors:Interaction.Triggers>
+                <!--#endregion Behavior-->
+            </StackPanel>
+        </DockPanel>
+        <Frame
+            NavigationUIVisibility="Hidden"
+            Content="{Binding NavigationService.CurrentView, Converter={StaticResource ViewModelToViewConverter}}">
+        </Frame>
+    </DockPanel>
+</Window>
