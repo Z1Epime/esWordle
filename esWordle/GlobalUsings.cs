@@ -20,3 +20,6 @@ global using Microsoft.Extensions.DependencyInjection;
 global using esWordle;
 global using esWordle.View;
 global using esWordle.ViewModel;
+global using esWordle.ViewModel.Utils;
+
+global using DataAccess.Model;
