@@ -5,10 +5,11 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
-namespace esWordle.View
+namespace esWordle.View.Converter
 {
-    public class ViewModelToViewConverter : IValueConverter
+    public class ViewModelToViewConverter : MarkupExtension, IValueConverter
     {
         private static readonly Dictionary<Type, Type> pairs = new Dictionary<Type, Type>()
         {
@@ -32,6 +33,11 @@ namespace esWordle.View
             if (Debugger.IsAttached)
                 Debugger.Break();
             return DependencyProperty.UnsetValue;
+        }
+
+        public override object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return this;
         }
     }
 }

@@ -15,6 +15,5 @@
             <Setter Property="Button.Margin" Value="5"/>
         </Style>
 
-        <view:ViewModelToViewConverter x:Key="ViewModelToViewConverter"/>
     </Application.Resources>
 </Application>
