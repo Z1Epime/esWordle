@@ -15,6 +15,16 @@
             <Setter Property="Button.Margin" Value="5"/>
         </Style>
 
-        <view:ViewModelToViewConverter x:Key="ViewModelToViewConverter"/>
+        <Style
+            x:Key="GameTextBox" TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="Red"></Setter>
+            <Setter Property="BorderThickness" Value="5"></Setter>
+            <Setter Property="FontSize" Value="75"></Setter>
+            <Setter Property="FontFamily" Value="Consolas"></Setter>
+            <Setter Property="CharacterCasing" Value="Upper"></Setter>
+            <Setter Property="MaxLength" Value="5"></Setter>
+            <Setter Property="HorizontalContentAlignment" Value="Center"></Setter>
+            <Setter Property="VerticalContentAlignment" Value="Center"></Setter>
+        </Style>
     </Application.Resources>
 </Application>

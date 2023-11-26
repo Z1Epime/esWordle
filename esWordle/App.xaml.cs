@@ -27,6 +27,7 @@ namespace esWordle
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<GameViewModel>();
             services.AddTransient<OptionsViewModel>();
+            services.AddTransient<WordleGridViewModel>();
             #endregion ViewModel
 
             services.AddSingleton<MainNavigationService>();

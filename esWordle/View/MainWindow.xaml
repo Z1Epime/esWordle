@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
-        xmlns:viewmodel="clr-namespace:esWordle.ViewModel"
+        xmlns:viewmodel="clr-namespace:esWordle.ViewModel" 
+        xmlns:converter="clr-namespace:esWordle.View.Converter"
         d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
         mc:Ignorable="d"
         Title="MainWindow" Height="1080" Width="1920" 
@@ -35,7 +36,7 @@
         </DockPanel>
         <Frame
             NavigationUIVisibility="Hidden"
-            Content="{Binding NavigationService.CurrentView, Converter={StaticResource ViewModelToViewConverter}}">
+            Content="{Binding NavigationService.CurrentView, Converter={converter:ViewModelToViewConverter}}">
         </Frame>
     </DockPanel>
 </Window>
