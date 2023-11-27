@@ -27,7 +27,7 @@ namespace DataAccess.Tests
         }
 
         [Test]
-        public async Task GetWords_ListOfValidWords()
+        public async Task Words_ListOfValidWords()
         {
             var list = await wordAccessor.Words.Value;
 
