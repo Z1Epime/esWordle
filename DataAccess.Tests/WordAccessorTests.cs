@@ -29,7 +29,7 @@ namespace DataAccess.Tests
         [Test]
         public async Task GetWords_ListOfValidWords()
         {
-            var list = await wordAccessor.GetWords();
+            var list = await wordAccessor.Words.Value;
 
             var hasFaultyWord = list.Any(word => word == null || 
                 string.IsNullOrWhiteSpace(word.Letters) || 
