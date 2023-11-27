@@ -1,4 +1,5 @@
 ﻿using DataAccess.Model;
+using DataAccess.Resources;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -21,11 +22,10 @@ namespace DataAccess.JSON
         /// </summary>
         public async Task<List<Word>> GetWords()
         {
-            var uri = new Uri("/DefaultData.json", UriKind.Relative);
-            var contentStream = Application.GetContentStream(uri);
+            byte[] stream = DefaultData.Words;
 
             string json;
-            using (StreamReader r = new StreamReader(contentStream.Stream))
+            using (StreamReader r = new StreamReader(new MemoryStream(stream)))
             {
                 json = await r.ReadToEndAsync();
             }
