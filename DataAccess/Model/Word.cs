@@ -8,6 +8,8 @@ namespace DataAccess.Model
 {
     public class Word
     {
+        public const int WordLength = 5;
+
         /// <summary>
         /// The letters of a word in their correct order.
         /// </summary>
