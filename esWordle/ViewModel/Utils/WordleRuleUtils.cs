@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace esWordle.ViewModel.Utils
@@ -21,12 +22,17 @@ namespace esWordle.ViewModel.Utils
         {
             if (word == null)
             {
-                throw new ArgumentNullException(nameof(word));
+                throw new ArgumentException($"{nameof(word)} is null.");
             }
 
             if (string.IsNullOrWhiteSpace(word.Letters))
             {
                 throw new ArgumentException($"{nameof(word)} has no letters.");
+            }
+
+            if (Regex.IsMatch(word.Letters, "^[a-zA-Z]"))
+            {
+                throw new ArgumentException($"{nameof(word)} doesn't contain letters only.");
             }
 
             if (word.Letters.Length != Word.WordLength)
