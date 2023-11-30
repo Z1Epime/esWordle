@@ -276,7 +276,7 @@ namespace esWordle.Tests
 
         [Test]
         [TestCaseSource(nameof(GetLetterHighlightColor_InvalidInput_ThrowsArgumentExceptionTestCases))]
-        public void GetLetterHighlightColor_InvalidInput_ThrowsException(string letter, int index, Word word)
+        public void GetLetterHighlightColor_InvalidInput_ThrowsArgumentException(string letter, int index, Word word)
         {
             Assert.Throws<ArgumentException>(() => ruleEnforcer.GetLetterHighlightColor(letter, index, word));
         }
@@ -311,6 +311,10 @@ namespace esWordle.Tests
                 yield return new TestCaseData("A", 0, new Word("?`´^°"));
                 yield return new TestCaseData("A", 0, new Word("<>|@€"));
                 yield return new TestCaseData("A", 0, new Word("µµµµµ"));
+                yield return new TestCaseData("A", 0, new Word("abcdü"));
+                yield return new TestCaseData("A", 0, new Word("abcdä"));
+                yield return new TestCaseData("A", 0, new Word("abcdö"));
+                yield return new TestCaseData("A", 0, new Word("üäöäü"));
                 yield return new TestCaseData("A", 0, new Word(""));
                 yield return new TestCaseData("A", 0, new Word(String.Empty));
                 yield return new TestCaseData("A", 0, new Word(int.MaxValue.ToString()));

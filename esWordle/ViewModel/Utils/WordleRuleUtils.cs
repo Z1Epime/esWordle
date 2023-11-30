@@ -30,7 +30,7 @@ namespace esWordle.ViewModel.Utils
                 throw new ArgumentException($"{nameof(word)} has no letters.");
             }
 
-            if (Regex.IsMatch(word.Letters, "^[a-zA-Z]"))
+            if (!Regex.IsMatch(word.Letters, "^[a-zA-Z]+$"))
             {
                 throw new ArgumentException($"{nameof(word)} doesn't contain letters only.");
             }
