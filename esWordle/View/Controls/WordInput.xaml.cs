@@ -31,6 +31,7 @@ namespace esWordle.View.Controls
         public WordInput()
         {
             InitializeComponent();
+            DataContext = App.ServiceProvider.GetRequiredService<WordInputViewModel>();
         }
     }
 }

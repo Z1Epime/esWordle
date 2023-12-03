@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:esWordle.View.Controls"
              xmlns:converter="clr-namespace:esWordle.View.Converter" 
-             xmlns:viewmodel="clr-namespace:esWordle.ViewModel"
-             d:DataContext="{d:DesignInstance Type=viewmodel:WordleGridViewModel}"
+             xmlns:viewmodel="clr-namespace:esWordle.ViewModel" 
+             xmlns:view="clr-namespace:esWordle.View"
+             d:DataContext="{d:DesignInstance Type=viewmodel:WordInputViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
@@ -30,36 +31,47 @@
         <TextBox 
             x:Name="FirstLetter"
             Grid.Column="0" 
+            Background="{Binding FirstLetterColor, Converter={converter:LetterHighlightColorToBrushConverter}}"
             Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
             Style="{StaticResource LetterTextBox}">
         </TextBox>
         <TextBox 
             x:Name="SecondLetter"
             Grid.Column="1" 
+            Background="{Binding SecondLetterColor, Converter={converter:LetterHighlightColorToBrushConverter}}"
             Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
             Style="{StaticResource LetterTextBox}">
         </TextBox>
         <TextBox 
             x:Name="ThirdLetter"
             Grid.Column="2" 
+            Background="{Binding ThirdLetterColor, Converter={converter:LetterHighlightColorToBrushConverter}}"
             Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
             Style="{StaticResource LetterTextBox}">
         </TextBox>
         <TextBox 
             x:Name="FourthLetter"
             Grid.Column="3" 
+            Background="{Binding FourthLetterColor, Converter={converter:LetterHighlightColorToBrushConverter}}"
             Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
             Style="{StaticResource LetterTextBox}">
         </TextBox>
         <TextBox 
             x:Name="FifthLetter"
             Grid.Column="4" 
+            Background="{Binding FifthLetterColor, Converter={converter:LetterHighlightColorToBrushConverter}}"
             Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
             Style="{StaticResource LetterTextBox}">
             <TextBox.InputBindings>
                 <KeyBinding 
-                    Key="Return"
-                    Command="{Binding ConfirmInputCommand}">
+                    Key="Return">
+                    <KeyBinding.Command>
+                        <MultiBinding Converter="{converter:CompositeCommandConverter}">
+                            <Binding Path="ConfirmInputCommand"/>
+                            <Binding Path="DataContext.ConfirmInputCommand" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=local:WordleGrid}"/>
+                        </MultiBinding>
+                    </KeyBinding.Command>
+
                     <KeyBinding.CommandParameter>
                         <MultiBinding Converter="{converter:InputConverter}">
                             <Binding Path="Text" ElementName="FirstLetter"></Binding>

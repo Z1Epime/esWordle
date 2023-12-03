@@ -61,6 +61,5 @@ namespace esWordle.ViewModel.Utils
 
             return result;
         }
-
     }
 }

@@ -26,8 +26,7 @@ namespace esWordle.View.Converter
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Debugger.Break();
-            return Binding.DoNothing;
+            return DependencyProperty.UnsetValue;
         }
 
         public override object ProvideValue(IServiceProvider serviceProvider)

@@ -27,42 +27,54 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <local:WordInput 
+            <ContentControl
                 Grid.Row="0" 
-                InputTry="First"
                 IsEnabled="{Binding CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
                     ConverterParameter={x:Static utils:InputTry.First}}">
-            </local:WordInput>
-            <local:WordInput 
+                <local:WordInput 
+                    InputTry="{x:Static utils:InputTry.First}">
+                </local:WordInput>
+            </ContentControl>
+            <ContentControl
                 Grid.Row="1" 
-                InputTry="Second"
                 IsEnabled="{Binding CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
                     ConverterParameter={x:Static utils:InputTry.Second}}">
-            </local:WordInput>
-            <local:WordInput 
+                <local:WordInput 
+                    InputTry="{x:Static utils:InputTry.Second}">
+                </local:WordInput>
+            </ContentControl>
+            <ContentControl
                 Grid.Row="2" 
-                InputTry="Third"
                 IsEnabled="{Binding CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
                     ConverterParameter={x:Static utils:InputTry.Third}}">
-            </local:WordInput>
-            <local:WordInput 
+                <local:WordInput
+                    InputTry="{x:Static utils:InputTry.Third}">
+                </local:WordInput>
+            </ContentControl>
+            <ContentControl
                 Grid.Row="3" 
-                InputTry="Fourth"
                 IsEnabled="{Binding CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
                     ConverterParameter={x:Static utils:InputTry.Fourth}}">
-            </local:WordInput>
-            <local:WordInput 
+                <local:WordInput
+                    InputTry="{x:Static utils:InputTry.Fourth}">
+                </local:WordInput>
+            </ContentControl>
+            <ContentControl
                 Grid.Row="4" 
-                InputTry="Fifth"
                 IsEnabled="{Binding CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
                     ConverterParameter={x:Static utils:InputTry.Fifth}}">
-            </local:WordInput>
-            <local:WordInput 
+                <local:WordInput 
+                    InputTry="{x:Static utils:InputTry.Fifth}">
+                </local:WordInput>
+            </ContentControl>
+            <ContentControl
                 Grid.Row="5" 
-                InputTry="Sixth"
                 IsEnabled="{Binding CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
                     ConverterParameter={x:Static utils:InputTry.Sixth}}">
-            </local:WordInput>
+                <local:WordInput
+                    InputTry="{x:Static utils:InputTry.Sixth}">
+                </local:WordInput>
+            </ContentControl>
         </Grid>
         <!--Keyboard grid-->
         <Grid
