@@ -30,26 +30,31 @@
         <TextBox 
             x:Name="FirstLetter"
             Grid.Column="0" 
+            Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
             Style="{StaticResource LetterTextBox}">
         </TextBox>
         <TextBox 
             x:Name="SecondLetter"
             Grid.Column="1" 
+            Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
             Style="{StaticResource LetterTextBox}">
         </TextBox>
         <TextBox 
             x:Name="ThirdLetter"
             Grid.Column="2" 
+            Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
             Style="{StaticResource LetterTextBox}">
         </TextBox>
         <TextBox 
             x:Name="FourthLetter"
             Grid.Column="3" 
+            Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
             Style="{StaticResource LetterTextBox}">
         </TextBox>
         <TextBox 
             x:Name="FifthLetter"
             Grid.Column="4" 
+            Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
             Style="{StaticResource LetterTextBox}">
             <TextBox.InputBindings>
                 <KeyBinding 

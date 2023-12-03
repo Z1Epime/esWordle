@@ -18,6 +18,8 @@ namespace esWordle.ViewModel.Utils
 
     public class RuleEnforcer
     {
+        public const string OnlyLettersRegex = "^[a-zA-Z]+$";
+
         public LetterHighlightColor GetLetterHighlightColor(string letter, int index, Word word)
         {
             if (word == null)
@@ -30,7 +32,7 @@ namespace esWordle.ViewModel.Utils
                 throw new ArgumentException($"{nameof(word)} has no letters.");
             }
 
-            if (!Regex.IsMatch(word.Letters, "^[a-zA-Z]+$"))
+            if (!Regex.IsMatch(word.Letters, OnlyLettersRegex))
             {
                 throw new ArgumentException($"{nameof(word)} doesn't contain letters only.");
             }
