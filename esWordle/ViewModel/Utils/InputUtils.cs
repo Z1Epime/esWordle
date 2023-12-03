@@ -34,8 +34,6 @@ namespace esWordle.ViewModel.Utils
 
     public class Input
     {
-        public const int Length = 5;
-
         public InputTry Try { get; set; }
         public Word Word { get; set; }
     }

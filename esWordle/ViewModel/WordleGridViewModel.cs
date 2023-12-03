@@ -29,7 +29,7 @@ namespace esWordle.ViewModel
 
         private bool CanExecuteConfirmInput(Input inputInfo)
         {
-            if (inputInfo.Word.Letters.Length != Input.Length)
+            if (inputInfo.Word.Letters.Length != Word.WordLength)
             {
                 return false;
             }
