@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Data;
@@ -143,132 +144,16 @@ namespace esWordle.Tests
         {
             get
             {
-                yield return new TestCaseData("B", 0, new Word("Knast"));
-                yield return new TestCaseData("B", 1, new Word("Knast"));
-                yield return new TestCaseData("B", 2, new Word("Knast"));
-                yield return new TestCaseData("B", 3, new Word("Knast"));
-                yield return new TestCaseData("B", 4, new Word("Knast"));
+                var word = new Word("Knast");
 
-                yield return new TestCaseData("C", 0, new Word("Knast"));
-                yield return new TestCaseData("C", 1, new Word("Knast"));
-                yield return new TestCaseData("C", 2, new Word("Knast"));
-                yield return new TestCaseData("C", 3, new Word("Knast"));
-                yield return new TestCaseData("C", 4, new Word("Knast"));
+                // Get alphabet without any letters of the word
+                var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".Where(a => !word.Letters.ToUpperInvariant().Contains(a)); 
 
-                yield return new TestCaseData("D", 0, new Word("Knast"));
-                yield return new TestCaseData("D", 1, new Word("Knast"));
-                yield return new TestCaseData("D", 2, new Word("Knast"));
-                yield return new TestCaseData("D", 3, new Word("Knast"));
-                yield return new TestCaseData("D", 4, new Word("Knast"));
-                
-                yield return new TestCaseData("E", 0, new Word("Knast"));
-                yield return new TestCaseData("E", 1, new Word("Knast"));
-                yield return new TestCaseData("E", 2, new Word("Knast"));
-                yield return new TestCaseData("E", 3, new Word("Knast"));
-                yield return new TestCaseData("E", 4, new Word("Knast"));
-
-                yield return new TestCaseData("F", 0, new Word("Knast"));
-                yield return new TestCaseData("F", 1, new Word("Knast"));
-                yield return new TestCaseData("F", 2, new Word("Knast"));
-                yield return new TestCaseData("F", 3, new Word("Knast"));
-                yield return new TestCaseData("F", 4, new Word("Knast"));
-
-                yield return new TestCaseData("G", 0, new Word("Knast"));
-                yield return new TestCaseData("G", 1, new Word("Knast"));
-                yield return new TestCaseData("G", 2, new Word("Knast"));
-                yield return new TestCaseData("G", 3, new Word("Knast"));
-                yield return new TestCaseData("G", 4, new Word("Knast"));
-
-                yield return new TestCaseData("H", 0, new Word("Knast"));
-                yield return new TestCaseData("H", 1, new Word("Knast"));
-                yield return new TestCaseData("H", 2, new Word("Knast"));
-                yield return new TestCaseData("H", 3, new Word("Knast"));
-                yield return new TestCaseData("H", 4, new Word("Knast"));
-
-                yield return new TestCaseData("I", 0, new Word("Knast"));
-                yield return new TestCaseData("I", 1, new Word("Knast"));
-                yield return new TestCaseData("I", 2, new Word("Knast"));
-                yield return new TestCaseData("I", 3, new Word("Knast"));
-                yield return new TestCaseData("I", 4, new Word("Knast"));
-
-                yield return new TestCaseData("J", 0, new Word("Knast"));
-                yield return new TestCaseData("J", 1, new Word("Knast"));
-                yield return new TestCaseData("J", 2, new Word("Knast"));
-                yield return new TestCaseData("J", 3, new Word("Knast"));
-                yield return new TestCaseData("J", 4, new Word("Knast"));
-
-                yield return new TestCaseData("L", 0, new Word("Knast"));
-                yield return new TestCaseData("L", 1, new Word("Knast"));
-                yield return new TestCaseData("L", 2, new Word("Knast"));
-                yield return new TestCaseData("L", 3, new Word("Knast"));
-                yield return new TestCaseData("L", 4, new Word("Knast"));
-
-                yield return new TestCaseData("M", 0, new Word("Knast"));
-                yield return new TestCaseData("M", 1, new Word("Knast"));
-                yield return new TestCaseData("M", 2, new Word("Knast"));
-                yield return new TestCaseData("M", 3, new Word("Knast"));
-                yield return new TestCaseData("M", 4, new Word("Knast"));
-
-                yield return new TestCaseData("O", 0, new Word("Knast"));
-                yield return new TestCaseData("O", 1, new Word("Knast"));
-                yield return new TestCaseData("O", 2, new Word("Knast"));
-                yield return new TestCaseData("O", 3, new Word("Knast"));
-                yield return new TestCaseData("O", 4, new Word("Knast"));
-
-                yield return new TestCaseData("P", 0, new Word("Knast"));
-                yield return new TestCaseData("P", 1, new Word("Knast"));
-                yield return new TestCaseData("P", 2, new Word("Knast"));
-                yield return new TestCaseData("P", 3, new Word("Knast"));
-                yield return new TestCaseData("P", 4, new Word("Knast"));
-
-                yield return new TestCaseData("Q", 0, new Word("Knast"));
-                yield return new TestCaseData("Q", 1, new Word("Knast"));
-                yield return new TestCaseData("Q", 2, new Word("Knast"));
-                yield return new TestCaseData("Q", 3, new Word("Knast"));
-                yield return new TestCaseData("Q", 4, new Word("Knast"));
-
-                yield return new TestCaseData("R", 0, new Word("Knast"));
-                yield return new TestCaseData("R", 1, new Word("Knast"));
-                yield return new TestCaseData("R", 2, new Word("Knast"));
-                yield return new TestCaseData("R", 3, new Word("Knast"));
-                yield return new TestCaseData("R", 4, new Word("Knast"));
-
-                yield return new TestCaseData("U", 0, new Word("Knast"));
-                yield return new TestCaseData("U", 1, new Word("Knast"));
-                yield return new TestCaseData("U", 2, new Word("Knast"));
-                yield return new TestCaseData("U", 3, new Word("Knast"));
-                yield return new TestCaseData("U", 4, new Word("Knast"));
-
-                yield return new TestCaseData("V", 0, new Word("Knast"));
-                yield return new TestCaseData("V", 1, new Word("Knast"));
-                yield return new TestCaseData("V", 2, new Word("Knast"));
-                yield return new TestCaseData("V", 3, new Word("Knast"));
-                yield return new TestCaseData("V", 4, new Word("Knast"));
-
-                yield return new TestCaseData("W", 0, new Word("Knast"));
-                yield return new TestCaseData("W", 1, new Word("Knast"));
-                yield return new TestCaseData("W", 2, new Word("Knast"));
-                yield return new TestCaseData("W", 3, new Word("Knast"));
-                yield return new TestCaseData("W", 4, new Word("Knast"));
-
-                yield return new TestCaseData("X", 0, new Word("Knast"));
-                yield return new TestCaseData("X", 1, new Word("Knast"));
-                yield return new TestCaseData("X", 2, new Word("Knast"));
-                yield return new TestCaseData("X", 3, new Word("Knast"));
-                yield return new TestCaseData("X", 4, new Word("Knast"));
-
-                yield return new TestCaseData("Y", 0, new Word("Knast"));
-                yield return new TestCaseData("Y", 1, new Word("Knast"));
-                yield return new TestCaseData("Y", 2, new Word("Knast"));
-                yield return new TestCaseData("Y", 3, new Word("Knast"));
-                yield return new TestCaseData("Y", 4, new Word("Knast"));
-
-                yield return new TestCaseData("Z", 0, new Word("Knast"));
-                yield return new TestCaseData("Z", 1, new Word("Knast"));
-                yield return new TestCaseData("Z", 2, new Word("Knast"));
-                yield return new TestCaseData("Z", 3, new Word("Knast"));
-                yield return new TestCaseData("Z", 4, new Word("Knast"));
-
+                foreach (var letter in alphabet)
+                {
+                    for (int i = 0; i < 5; i++)
+                        yield return new TestCaseData(letter.ToString(), i, word);
+                }
             }
         }
 
