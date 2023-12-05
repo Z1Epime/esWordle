@@ -27,120 +27,54 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
-            <TextBox 
-                x:Name="FirstInput" 
-                Grid.Row="0"
-                Style="{StaticResource GameTextBox}" 
+            <ContentControl
+                Grid.Row="0" 
                 IsEnabled="{Binding CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
                     ConverterParameter={x:Static utils:InputTry.First}}">
-                <TextBox.InputBindings>
-                    <KeyBinding 
-                        Key="Return"
-                        Command="{Binding ConfirmInputCommand}">
-                        <KeyBinding.CommandParameter>
-                            <MultiBinding Converter="{converter:InputConverter}">
-                                <Binding Source="{x:Static utils:InputTry.First}"></Binding>
-                                <Binding Path="Text" ElementName="FirstInput"></Binding>
-                            </MultiBinding>
-                        </KeyBinding.CommandParameter>
-                    </KeyBinding>
-                </TextBox.InputBindings>
-            </TextBox>
-            <TextBox 
-                x:Name="SecondInput" 
-                Grid.Row="1"
-                Style="{StaticResource GameTextBox}" 
+                <local:WordInput 
+                    InputTry="{x:Static utils:InputTry.First}">
+                </local:WordInput>
+            </ContentControl>
+            <ContentControl
+                Grid.Row="1" 
                 IsEnabled="{Binding CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
                     ConverterParameter={x:Static utils:InputTry.Second}}">
-                <TextBox.InputBindings>
-                    <KeyBinding 
-                        Key="Return"
-                        Command="{Binding ConfirmInputCommand}">
-                        <KeyBinding.CommandParameter>
-                            <MultiBinding Converter="{converter:InputConverter}">
-                                <Binding Source="{x:Static utils:InputTry.Second}"></Binding>
-                                <Binding Path="Text" ElementName="SecondInput"></Binding>
-                            </MultiBinding>
-                        </KeyBinding.CommandParameter>
-                    </KeyBinding>
-                </TextBox.InputBindings>
-            </TextBox>
-            <TextBox 
-                x:Name="ThirdInput" 
+                <local:WordInput 
+                    InputTry="{x:Static utils:InputTry.Second}">
+                </local:WordInput>
+            </ContentControl>
+            <ContentControl
                 Grid.Row="2" 
-                Style="{StaticResource GameTextBox}" 
                 IsEnabled="{Binding CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
                     ConverterParameter={x:Static utils:InputTry.Third}}">
-                <TextBox.InputBindings>
-                    <KeyBinding 
-                        Key="Return"
-                        Command="{Binding ConfirmInputCommand}">
-                        <KeyBinding.CommandParameter>
-                            <MultiBinding Converter="{converter:InputConverter}">
-                                <Binding Source="{x:Static utils:InputTry.Third}"></Binding>
-                                <Binding Path="Text" ElementName="ThirdInput"></Binding>
-                            </MultiBinding>
-                        </KeyBinding.CommandParameter>
-                    </KeyBinding>
-                </TextBox.InputBindings>
-            </TextBox>
-            <TextBox 
-                x:Name="FourthInput" 
+                <local:WordInput
+                    InputTry="{x:Static utils:InputTry.Third}">
+                </local:WordInput>
+            </ContentControl>
+            <ContentControl
                 Grid.Row="3" 
-                Style="{StaticResource GameTextBox}"
                 IsEnabled="{Binding CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
                     ConverterParameter={x:Static utils:InputTry.Fourth}}">
-                <TextBox.InputBindings>
-                    <KeyBinding 
-                        Key="Return"
-                        Command="{Binding ConfirmInputCommand}">
-                        <KeyBinding.CommandParameter>
-                            <MultiBinding Converter="{converter:InputConverter}">
-                                <Binding Source="{x:Static utils:InputTry.Fourth}"></Binding>
-                                <Binding Path="Text" ElementName="FourthInput"></Binding>
-                            </MultiBinding>
-                        </KeyBinding.CommandParameter>
-                    </KeyBinding>
-                </TextBox.InputBindings>
-            </TextBox>
-            <TextBox 
-                x:Name="FifthInput"
-                Grid.Row="4"
-                Style="{StaticResource GameTextBox}" 
+                <local:WordInput
+                    InputTry="{x:Static utils:InputTry.Fourth}">
+                </local:WordInput>
+            </ContentControl>
+            <ContentControl
+                Grid.Row="4" 
                 IsEnabled="{Binding CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
                     ConverterParameter={x:Static utils:InputTry.Fifth}}">
-                <TextBox.InputBindings>
-                    <KeyBinding 
-                        Key="Return"
-                        Command="{Binding ConfirmInputCommand}">
-                        <KeyBinding.CommandParameter>
-                            <MultiBinding Converter="{converter:InputConverter}">
-                                <Binding Source="{x:Static utils:InputTry.Fifth}"></Binding>
-                                <Binding Path="Text" ElementName="FifthInput"></Binding>
-                            </MultiBinding>
-                        </KeyBinding.CommandParameter>
-                    </KeyBinding>
-                </TextBox.InputBindings>
-            </TextBox>
-            <TextBox 
-                x:Name="SixthInput" 
-                Grid.Row="5"
-                Style="{StaticResource GameTextBox}"
+                <local:WordInput 
+                    InputTry="{x:Static utils:InputTry.Fifth}">
+                </local:WordInput>
+            </ContentControl>
+            <ContentControl
+                Grid.Row="5" 
                 IsEnabled="{Binding CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
                     ConverterParameter={x:Static utils:InputTry.Sixth}}">
-                <TextBox.InputBindings>
-                    <KeyBinding 
-                        Key="Return"
-                        Command="{Binding ConfirmInputCommand}">
-                        <KeyBinding.CommandParameter>
-                            <MultiBinding Converter="{converter:InputConverter}">
-                                <Binding Source="{x:Static utils:InputTry.Sixth}"></Binding>
-                                <Binding Path="Text" ElementName="SixthInput"></Binding>
-                            </MultiBinding>
-                        </KeyBinding.CommandParameter>
-                    </KeyBinding>
-                </TextBox.InputBindings>
-            </TextBox>
+                <local:WordInput
+                    InputTry="{x:Static utils:InputTry.Sixth}">
+                </local:WordInput>
+            </ContentControl>
         </Grid>
         <!--Keyboard grid-->
         <Grid

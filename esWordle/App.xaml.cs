@@ -28,8 +28,10 @@ namespace esWordle
             services.AddSingleton<GameViewModel>();
             services.AddTransient<OptionsViewModel>();
             services.AddTransient<WordleGridViewModel>();
+            services.AddTransient<WordInputViewModel>();
             #endregion ViewModel
 
+            services.AddTransient<RuleEnforcer>();    
             services.AddSingleton<MainNavigationService>();
 
             ServiceProvider = services.BuildServiceProvider();
