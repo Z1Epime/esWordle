@@ -159,6 +159,8 @@ namespace esWordle.Tests
 
         #endregion
 
+        #region GetLetterHighlightColor_InvalidInput_ThrowsArgumentException
+
         [Test]
         [TestCaseSource(nameof(GetLetterHighlightColor_InvalidInput_ThrowsArgumentExceptionTestCases))]
         public void GetLetterHighlightColor_InvalidInput_ThrowsArgumentException(string letter, int index, Word word)
@@ -211,5 +213,7 @@ namespace esWordle.Tests
                 yield return new TestCaseData("A", 0, new Word("\n\f\t"));
             }
         }
+
+        #endregion
     }
 }
