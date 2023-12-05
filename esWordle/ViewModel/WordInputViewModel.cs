@@ -1,6 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.Input;
 using DataAccess.Model;
-using esWordle.ViewModel;
 
 namespace esWordle.ViewModel
 {
@@ -18,20 +17,22 @@ namespace esWordle.ViewModel
         private LetterHighlightColor fifthLetterColor;
 
         private readonly RuleEnforcer ruleEnforcer;
+        private readonly GameSessionViewModel gameSessionViewModel;
 
-        public WordInputViewModel(RuleEnforcer ruleEnforcer)
+        public WordInputViewModel(RuleEnforcer ruleEnforcer, GameSessionViewModel gameSessionViewModel)
         {
             this.ruleEnforcer = ruleEnforcer;
+            this.gameSessionViewModel = gameSessionViewModel;
         }
 
         [RelayCommand(CanExecute = nameof(CanExecuteConfirmInput))]
         private void ConfirmInput(Input input)
         {
-            FirstLetterColor = ruleEnforcer.GetLetterHighlightColor(input.Word.Letters[0].ToString(), 0, WordleGridViewModel.Solution);
-            SecondLetterColor = ruleEnforcer.GetLetterHighlightColor(input.Word.Letters[1].ToString(), 1, WordleGridViewModel.Solution);
-            ThirdLetterColor = ruleEnforcer.GetLetterHighlightColor(input.Word.Letters[2].ToString(), 2, WordleGridViewModel.Solution);
-            FourthLetterColor = ruleEnforcer.GetLetterHighlightColor(input.Word.Letters[3].ToString(), 3, WordleGridViewModel.Solution);
-            FifthLetterColor = ruleEnforcer.GetLetterHighlightColor(input.Word.Letters[4].ToString(), 4, WordleGridViewModel.Solution);
+            FirstLetterColor = ruleEnforcer.GetLetterHighlightColor(input.Word.Letters[0].ToString(), 0, gameSessionViewModel.Solution);
+            SecondLetterColor = ruleEnforcer.GetLetterHighlightColor(input.Word.Letters[1].ToString(), 1, gameSessionViewModel.Solution);
+            ThirdLetterColor = ruleEnforcer.GetLetterHighlightColor(input.Word.Letters[2].ToString(), 2, gameSessionViewModel.Solution);
+            FourthLetterColor = ruleEnforcer.GetLetterHighlightColor(input.Word.Letters[3].ToString(), 3, gameSessionViewModel.Solution);
+            FifthLetterColor = ruleEnforcer.GetLetterHighlightColor(input.Word.Letters[4].ToString(), 4, gameSessionViewModel.Solution);
         }
 
         private bool CanExecuteConfirmInput(Input input)
