@@ -12,16 +12,16 @@ namespace esWordle.View.Converter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is LetterHighlightColor color)
+            if (value is HighlightColor color)
             {
                 switch (color)
                 {
-                    case LetterHighlightColor.Gray:
+                    case HighlightColor.Gray:
                         // even though this is white and not gray, the TextBox will look gray because its disabled
                         return new SolidColorBrush(Color.FromRgb(255, 255, 255));
-                    case LetterHighlightColor.Yellow:
+                    case HighlightColor.Yellow:
                         return new SolidColorBrush(Color.FromRgb(255, 255, 0));
-                    case LetterHighlightColor.Green:
+                    case HighlightColor.Green:
                         return new SolidColorBrush(Color.FromRgb(0, 204, 0));
                     default:
                         return new SolidColorBrush(Color.FromRgb(255, 255, 255)); // standard background

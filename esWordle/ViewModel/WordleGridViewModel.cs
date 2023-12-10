@@ -9,40 +9,23 @@ namespace esWordle.ViewModel
 {
     public partial class WordleGridViewModel : ViewModelBase
     {
-        public static readonly Word Solution;
-
         [ObservableProperty]
-        private InputTry currentTry;
+        private GameSessionViewModel gameSessionViewModel;
 
-        static WordleGridViewModel()
+        public WordleGridViewModel(GameSessionViewModel gameSessionViewModel)
         {
-            Solution = new Word("Roach"); // TODO: get random word and remove static hack here
+            this.gameSessionViewModel = gameSessionViewModel;
         }
 
-        [RelayCommand(CanExecute = nameof(CanExecuteConfirmInput))]
-        private void ConfirmInput(Input inputInfo)
+        [RelayCommand]
+        private async Task InitWordle()
         {
-            if (inputInfo.Word.Letters.Equals(Solution.Letters, StringComparison.OrdinalIgnoreCase) && // word found
-                inputInfo.Try == InputTry.Sixth) // used last try
+            // Every time the user navigates to the GameView, the WordleGrid view fires "Loaded" and this gets called.
+            // This check will prevent the solution word to get picked every time anew
+            if (GameSessionViewModel.Solution == null)
             {
-                // stuff to end game goes here ?
+                await GameSessionViewModel.SetSolution();
             }
-
-            CurrentTry = inputInfo.Try.Next();
-        }   
-
-        private bool CanExecuteConfirmInput(Input inputInfo)
-        {
-            if (inputInfo == null)
-            {
-                return false;
-            }
-
-            if (inputInfo.Word.Letters.Length != Word.WordLength)
-            {
-                return false;
-            }
-            return true;
         }
     }
 }

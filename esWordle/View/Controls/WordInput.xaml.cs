@@ -28,10 +28,28 @@ namespace esWordle.View.Controls
             set => SetValue(InputTryProperty, value);
         }
 
+        private WordInputViewModel viewModel;
+
         public WordInput()
         {
             InitializeComponent();
-            DataContext = App.ServiceProvider.GetRequiredService<WordInputViewModel>();
+            viewModel = App.ServiceProvider.GetRequiredService<WordInputViewModel>();
+            DataContext = viewModel;
+        }
+
+        public void ClearLetters()
+        {
+            viewModel.FirstLetter = "";
+            viewModel.SecondLetter = "";
+            viewModel.ThirdLetter = "";
+            viewModel.FourthLetter = "";
+            viewModel.FifthLetter = "";
+
+            viewModel.FirstLetterColor = default;
+            viewModel.SecondLetterColor = default;
+            viewModel.ThirdLetterColor = default;
+            viewModel.FourthLetterColor = default;
+            viewModel.FifthLetterColor = default;
         }
     }
 }

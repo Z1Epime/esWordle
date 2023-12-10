@@ -27,10 +27,12 @@ namespace esWordle
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<GameViewModel>();
             services.AddTransient<OptionsViewModel>();
-            services.AddTransient<WordleGridViewModel>();
+            services.AddSingleton<WordleGridViewModel>();
             services.AddTransient<WordInputViewModel>();
+            services.AddSingleton<GameSessionViewModel>();
             #endregion ViewModel
 
+            services.AddTransient<WordAccessor>();
             services.AddTransient<RuleEnforcer>();    
             services.AddSingleton<MainNavigationService>();
 

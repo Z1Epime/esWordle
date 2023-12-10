@@ -32,8 +32,8 @@ namespace DataAccess.Tests
             var list = await wordAccessor.Words.Value;
 
             var hasFaultyWord = list.Any(word => word == null || 
-                string.IsNullOrWhiteSpace(word.Letters) || 
-                word.Letters.Length != Word.WordLength);
+                string.IsNullOrWhiteSpace(word.GetLettersAsString()) ||
+               word.GetLettersAsString().Length != Word.WordLength);
 
             Assert.That(hasFaultyWord, Is.False);
         }

@@ -9,35 +9,28 @@ using System.Threading.Tasks;
 
 namespace esWordle.ViewModel.Utils
 {
-    public enum LetterHighlightColor
-    {
-        Gray,
-        Yellow,
-        Green,
-    }
-
     public class RuleEnforcer
     {
         public const string OnlyLettersRegex = "^[a-zA-Z]+$";
 
-        public LetterHighlightColor GetLetterHighlightColor(string letter, int index, Word word)
+        public HighlightColor GetLetterHighlightColor(string letter, int index, Word word)
         {
             if (word == null)
             {
                 throw new ArgumentException($"{nameof(word)} is null.");
             }
 
-            if (string.IsNullOrWhiteSpace(word.Letters))
+            if (string.IsNullOrWhiteSpace(word.GetLettersAsString()))
             {
                 throw new ArgumentException($"{nameof(word)} has no letters.");
             }
 
-            if (!Regex.IsMatch(word.Letters, OnlyLettersRegex))
+            if (!Regex.IsMatch(word.GetLettersAsString(), OnlyLettersRegex))
             {
                 throw new ArgumentException($"{nameof(word)} doesn't contain letters only.");
             }
 
-            if (word.Letters.Length != Word.WordLength)
+            if (word.GetLettersAsString().Length != Word.WordLength)
             {
                 throw new ArgumentException($"{nameof(word)} has wrong amount of characters.");
             }
@@ -47,15 +40,15 @@ namespace esWordle.ViewModel.Utils
                 throw new ArgumentException($"{nameof(letter)} must have a single character.");
             }
 
-            var result = LetterHighlightColor.Gray;
+            var result = HighlightColor.Gray;
 
-            if (word.Letters.Any(l => string.Equals(l.ToString(), letter, StringComparison.OrdinalIgnoreCase)))
+            if (word.GetLettersAsString().Any(l => string.Equals(l.ToString(), letter, StringComparison.OrdinalIgnoreCase)))
             {
-                result = LetterHighlightColor.Yellow;
+                result = HighlightColor.Yellow;
 
-                if (word.Letters.ElementAt(index).ToString().Equals(letter, StringComparison.OrdinalIgnoreCase))
+                if (word.Letters.ElementAt(index).Character.Equals(letter, StringComparison.OrdinalIgnoreCase))
                 {
-                    result = LetterHighlightColor.Green;
+                    result = HighlightColor.Green;
                 }
             }
 

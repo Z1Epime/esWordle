@@ -35,8 +35,11 @@ namespace DataAccess.JSON
                 json = await r.ReadToEndAsync();
             }
 
-            List<Word> words = JsonConvert.DeserializeObject<List<Word>>(json);
-            return words;
+            List<SimpleWord> simpleWords = JsonConvert.DeserializeObject<List<SimpleWord>>(json);
+
+            var words = simpleWords.Select(w => new Word(w.Letters.Select(l => new Letter(l.ToString(), HighlightColor.Gray))));
+
+            return words.ToList();
         }
     }
 }

@@ -1,32 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Markup;
 
 namespace esWordle.View.Converter
 {
-    public class AllowLettersOnlyConverter : MarkupExtension, IValueConverter
+    public class BoolToVisibilityConverter : MarkupExtension, IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value is string str)
+            if (value is bool val && val)
             {
-                if (Regex.IsMatch(str, RuleEnforcer.OnlyLettersRegex))
-                {
-                    return value;
-                }
+                return Visibility.Visible;
             }
-            return DependencyProperty.UnsetValue;
+            return Visibility.Collapsed;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            return DependencyProperty.UnsetValue;
+            if (value is Visibility visibility && visibility == Visibility.Visible)
+            {
+                return true;
+            }
+            return false;
         }
 
         public override object ProvideValue(IServiceProvider serviceProvider)
