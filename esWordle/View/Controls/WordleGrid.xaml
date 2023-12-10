@@ -43,82 +43,71 @@
         <Grid
             IsEnabled="{Binding GameSessionViewModel.GameEnded, Converter={converter:InvertedBoolConverter}}">
             <!--Game grid-->
-            <Grid>
+            <Grid
+                MaxWidth="600"
+                MaxHeight="600">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <!--Word input grid-->
-                <Grid
-                    MaxWidth="600"
-                    Grid.Row="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <ContentControl
-                        Grid.Row="0" 
-                        IsEnabled="{Binding GameSessionViewModel.CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
-                            ConverterParameter={x:Static utils:InputTry.First}}">
-                        <local:WordInput 
-                            x:Name="FirstInput"
-                            InputTry="{x:Static utils:InputTry.First}">
-                        </local:WordInput>
-                    </ContentControl>
-                    <ContentControl
-                        Grid.Row="1" 
-                        IsEnabled="{Binding GameSessionViewModel.CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
-                            ConverterParameter={x:Static utils:InputTry.Second}}">
-                        <local:WordInput 
-                            x:Name="SecondInput"
-                            InputTry="{x:Static utils:InputTry.Second}">
-                        </local:WordInput>
-                    </ContentControl>
-                    <ContentControl
-                        Grid.Row="2" 
-                        IsEnabled="{Binding GameSessionViewModel.CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
-                            ConverterParameter={x:Static utils:InputTry.Third}}">
-                        <local:WordInput
-                            x:Name="ThirdInput"
-                            InputTry="{x:Static utils:InputTry.Third}">
-                        </local:WordInput>
-                    </ContentControl>
-                    <ContentControl
-                        Grid.Row="3" 
-                        IsEnabled="{Binding GameSessionViewModel.CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
-                            ConverterParameter={x:Static utils:InputTry.Fourth}}">
-                        <local:WordInput
-                            x:Name="FourthInput"
-                            InputTry="{x:Static utils:InputTry.Fourth}">
-                        </local:WordInput>
-                    </ContentControl>
-                    <ContentControl
-                        Grid.Row="4" 
-                        IsEnabled="{Binding GameSessionViewModel.CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
-                            ConverterParameter={x:Static utils:InputTry.Fifth}}">
-                        <local:WordInput 
-                            x:Name="FifthInput"
-                            InputTry="{x:Static utils:InputTry.Fifth}">
-                        </local:WordInput>
-                    </ContentControl>
-                    <ContentControl
-                        Grid.Row="5" 
-                        IsEnabled="{Binding GameSessionViewModel.CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
-                            ConverterParameter={x:Static utils:InputTry.Sixth}}">
-                        <local:WordInput
-                            x:Name="SixthInput"
-                            InputTry="{x:Static utils:InputTry.Sixth}">
-                        </local:WordInput>
-                    </ContentControl>
-                </Grid>
-                <!--Keyboard grid-->
-                <Grid
-                    Grid.Row="1">
-                </Grid>
+                <ContentControl
+                    Grid.Row="0" 
+                    IsEnabled="{Binding GameSessionViewModel.CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
+                        ConverterParameter={x:Static utils:InputTry.First}}">
+                    <local:WordInput 
+                        x:Name="FirstInput"
+                        InputTry="{x:Static utils:InputTry.First}">
+                    </local:WordInput>
+                </ContentControl>
+                <ContentControl
+                    Grid.Row="1" 
+                    IsEnabled="{Binding GameSessionViewModel.CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
+                        ConverterParameter={x:Static utils:InputTry.Second}}">
+                    <local:WordInput 
+                        x:Name="SecondInput"
+                        InputTry="{x:Static utils:InputTry.Second}">
+                    </local:WordInput>
+                </ContentControl>
+                <ContentControl
+                    Grid.Row="2" 
+                    IsEnabled="{Binding GameSessionViewModel.CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
+                        ConverterParameter={x:Static utils:InputTry.Third}}">
+                    <local:WordInput
+                        x:Name="ThirdInput"
+                        InputTry="{x:Static utils:InputTry.Third}">
+                    </local:WordInput>
+                </ContentControl>
+                <ContentControl
+                    Grid.Row="3" 
+                    IsEnabled="{Binding GameSessionViewModel.CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
+                        ConverterParameter={x:Static utils:InputTry.Fourth}}">
+                    <local:WordInput
+                        x:Name="FourthInput"
+                        InputTry="{x:Static utils:InputTry.Fourth}">
+                    </local:WordInput>
+                </ContentControl>
+                <ContentControl
+                    Grid.Row="4" 
+                    IsEnabled="{Binding GameSessionViewModel.CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
+                        ConverterParameter={x:Static utils:InputTry.Fifth}}">
+                    <local:WordInput 
+                        x:Name="FifthInput"
+                        InputTry="{x:Static utils:InputTry.Fifth}">
+                    </local:WordInput>
+                </ContentControl>
+                <ContentControl
+                    Grid.Row="5" 
+                    IsEnabled="{Binding GameSessionViewModel.CurrentTry, Mode=TwoWay, Converter={converter:InputTriesToBoolConverter}, 
+                        ConverterParameter={x:Static utils:InputTry.Sixth}}">
+                    <local:WordInput
+                        x:Name="SixthInput"
+                        InputTry="{x:Static utils:InputTry.Sixth}">
+                    </local:WordInput>
+                </ContentControl>
             </Grid>
 
             <!--Grid which displays end of game-->
