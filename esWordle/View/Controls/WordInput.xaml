@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:esWordle.View.Controls"
+             xmlns:utils="clr-namespace:esWordle.ViewModel.Utils" 
              xmlns:converter="clr-namespace:esWordle.View.Converter" 
              xmlns:viewmodel="clr-namespace:esWordle.ViewModel" 
-             xmlns:view="clr-namespace:esWordle.View"
+             xmlns:view="clr-namespace:esWordle.View" 
+             xmlns:behaviors="http://schemas.microsoft.com/xaml/behaviors"
              d:DataContext="{d:DesignInstance Type=viewmodel:WordInputViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -29,56 +31,95 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBox 
-            x:Name="FirstLetter"
+            x:Name="FirstInput"
             Grid.Column="0" 
+            Style="{StaticResource LetterTextBox}"
             Background="{Binding FirstLetterColor, Converter={converter:LetterHighlightColorToBrushConverter}}"
-            Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
-            Style="{StaticResource LetterTextBox}">
+            Text="{Binding FirstLetter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <behaviors:Interaction.Triggers>
+                <behaviors:EventTrigger EventName="PreviewTextInput">
+                    <behaviors:InvokeCommandAction Command="{Binding DenyNonLettersCommand}" PassEventArgsToCommand="True"></behaviors:InvokeCommandAction>
+                </behaviors:EventTrigger>
+                <behaviors:EventTrigger EventName="PreviewKeyDown">
+                    <behaviors:InvokeCommandAction Command="{Binding DenySpaceCommand}" PassEventArgsToCommand="True"></behaviors:InvokeCommandAction>
+                </behaviors:EventTrigger>
+            </behaviors:Interaction.Triggers>
         </TextBox>
         <TextBox 
-            x:Name="SecondLetter"
+            x:Name="SecondInput"
             Grid.Column="1" 
             Background="{Binding SecondLetterColor, Converter={converter:LetterHighlightColorToBrushConverter}}"
-            Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
-            Style="{StaticResource LetterTextBox}">
+            Style="{StaticResource LetterTextBox}"
+            Text="{Binding SecondLetter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <behaviors:Interaction.Triggers>
+                <behaviors:EventTrigger EventName="PreviewTextInput">
+                    <behaviors:InvokeCommandAction Command="{Binding DenyNonLettersCommand}" PassEventArgsToCommand="True"></behaviors:InvokeCommandAction>
+                </behaviors:EventTrigger>
+                <behaviors:EventTrigger EventName="PreviewKeyDown">
+                    <behaviors:InvokeCommandAction Command="{Binding DenySpaceCommand}" PassEventArgsToCommand="True"></behaviors:InvokeCommandAction>
+                </behaviors:EventTrigger>
+            </behaviors:Interaction.Triggers>
         </TextBox>
         <TextBox 
-            x:Name="ThirdLetter"
+            x:Name="ThirdInput"
             Grid.Column="2" 
             Background="{Binding ThirdLetterColor, Converter={converter:LetterHighlightColorToBrushConverter}}"
-            Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
-            Style="{StaticResource LetterTextBox}">
+            Style="{StaticResource LetterTextBox}"
+            Text="{Binding ThirdLetter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <behaviors:Interaction.Triggers>
+                <behaviors:EventTrigger EventName="PreviewTextInput">
+                    <behaviors:InvokeCommandAction Command="{Binding DenyNonLettersCommand}" PassEventArgsToCommand="True"></behaviors:InvokeCommandAction>
+                </behaviors:EventTrigger>
+                <behaviors:EventTrigger EventName="PreviewKeyDown">
+                    <behaviors:InvokeCommandAction Command="{Binding DenySpaceCommand}" PassEventArgsToCommand="True"></behaviors:InvokeCommandAction>
+                </behaviors:EventTrigger>
+            </behaviors:Interaction.Triggers>
         </TextBox>
         <TextBox 
-            x:Name="FourthLetter"
+            x:Name="FourthInput"
             Grid.Column="3" 
             Background="{Binding FourthLetterColor, Converter={converter:LetterHighlightColorToBrushConverter}}"
-            Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
-            Style="{StaticResource LetterTextBox}">
+            Style="{StaticResource LetterTextBox}"
+            Text="{Binding FourthLetter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <behaviors:Interaction.Triggers>
+                <behaviors:EventTrigger EventName="PreviewTextInput">
+                    <behaviors:InvokeCommandAction Command="{Binding DenyNonLettersCommand}" PassEventArgsToCommand="True"></behaviors:InvokeCommandAction>
+                </behaviors:EventTrigger>
+                <behaviors:EventTrigger EventName="PreviewKeyDown">
+                    <behaviors:InvokeCommandAction Command="{Binding DenySpaceCommand}" PassEventArgsToCommand="True"></behaviors:InvokeCommandAction>
+                </behaviors:EventTrigger>
+            </behaviors:Interaction.Triggers>
         </TextBox>
         <TextBox 
-            x:Name="FifthLetter"
+            x:Name="FifthInput"
             Grid.Column="4" 
             Background="{Binding FifthLetterColor, Converter={converter:LetterHighlightColorToBrushConverter}}"
-            Text="{Binding RelativeSource={RelativeSource Mode=Self}, Path=Text, Converter={converter:AllowLettersOnlyConverter}}"
-            Style="{StaticResource LetterTextBox}">
+            Style="{StaticResource LetterTextBox}"
+            Text="{Binding FifthLetter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <behaviors:Interaction.Triggers>
+                <behaviors:EventTrigger EventName="PreviewTextInput">
+                    <behaviors:InvokeCommandAction Command="{Binding DenyNonLettersCommand}" PassEventArgsToCommand="True"></behaviors:InvokeCommandAction>
+                </behaviors:EventTrigger>
+                <behaviors:EventTrigger EventName="PreviewKeyDown">
+                    <behaviors:InvokeCommandAction Command="{Binding DenySpaceCommand}" PassEventArgsToCommand="True"></behaviors:InvokeCommandAction>
+                </behaviors:EventTrigger>
+            </behaviors:Interaction.Triggers>
             <TextBox.InputBindings>
                 <KeyBinding 
-                    Key="Return">
-                    <KeyBinding.Command>
-                        <MultiBinding Converter="{converter:CompositeCommandConverter}">
-                            <Binding Path="ConfirmInputCommand"/>
-                            <Binding Path="DataContext.ConfirmInputCommand" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=local:WordleGrid}"/>
-                        </MultiBinding>
-                    </KeyBinding.Command>
-
+                    Key="Return"
+                    Command="{Binding ConfirmInputCommand}">
                     <KeyBinding.CommandParameter>
                         <MultiBinding Converter="{converter:InputConverter}">
-                            <Binding Path="Text" ElementName="FirstLetter"></Binding>
-                            <Binding Path="Text" ElementName="SecondLetter"></Binding>
-                            <Binding Path="Text" ElementName="ThirdLetter"></Binding>
-                            <Binding Path="Text" ElementName="FourthLetter"></Binding>
-                            <Binding Path="Text" ElementName="FifthLetter"></Binding>
+                            <Binding Path="FirstLetter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                            <Binding Path="FirstLetterColor" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                            <Binding Path="SecondLetter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                            <Binding Path="SecondLetterColor" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                            <Binding Path="ThirdLetter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                            <Binding Path="ThirdLetterColor" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                            <Binding Path="FourthLetter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                            <Binding Path="FourthLetterColor" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                            <Binding Path="FifthLetter" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
+                            <Binding Path="FifthLetterColor" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"></Binding>
                             <Binding Path="InputTry" RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=local:WordInput}"></Binding>
                         </MultiBinding>
                     </KeyBinding.CommandParameter>

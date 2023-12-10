@@ -29,7 +29,7 @@ namespace esWordle.Tests
         {
             var result = ruleEnforcer.GetLetterHighlightColor(letter, index, word);
 
-            Assert.That(result == LetterHighlightColor.Yellow);
+            Assert.That(result == HighlightColor.Yellow);
         }
 
         private static IEnumerable<TestCaseData> GetLetterHighlightColor_LetterExistsButInWrongPosition_ReturnsLetterHighlightColorYellowTestCases
@@ -101,7 +101,7 @@ namespace esWordle.Tests
         {
             var result = ruleEnforcer.GetLetterHighlightColor(letter, index, word);
 
-            Assert.That(result == LetterHighlightColor.Green);
+            Assert.That(result == HighlightColor.Green);
         }
 
         private static IEnumerable<TestCaseData> GetLetterHighlightColor_LetterExistsAndInCorrectPosition_ReturnsLetterHighlightColorGreenTestCases
@@ -137,7 +137,7 @@ namespace esWordle.Tests
         {
             var result = ruleEnforcer.GetLetterHighlightColor(letter, index, word);
 
-            Assert.That(result == LetterHighlightColor.Gray);
+            Assert.That(result == HighlightColor.Gray);
         }
 
         private static IEnumerable<TestCaseData> GetLetterHighlightColor_LetterDoesNotExist_ReturnsLetterHighlightColorGrayTestCases
@@ -147,7 +147,7 @@ namespace esWordle.Tests
                 var word = new Word("Knast");
 
                 // Get alphabet without any letters of the word
-                var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".Where(a => !word.Letters.ToUpperInvariant().Contains(a)); 
+                var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".Where(a => !word.GetLettersAsString().ToUpperInvariant().Contains(a)); 
 
                 foreach (var letter in alphabet)
                 {
@@ -209,7 +209,7 @@ namespace esWordle.Tests
                 yield return new TestCaseData("A", 0, new Word(Binding.DoNothing.ToString()));
                 yield return new TestCaseData("A", 0, new Word(DependencyProperty.UnsetValue.ToString()));
                 yield return new TestCaseData("A", 0, new Word(String.Empty));
-                yield return new TestCaseData("A", 0, new Word(null));
+                yield return new TestCaseData("A", 0, new Word(Enumerable.Empty<string>().ToString()));
                 yield return new TestCaseData("A", 0, new Word("\n\f\t"));
             }
         }

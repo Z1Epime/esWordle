@@ -13,7 +13,7 @@ namespace DataAccess.Model
         /// <summary>
         /// The letters of a word in their correct order.
         /// </summary>
-        public string Letters { get; set; }
+        public IEnumerable<Letter> Letters { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Word"/> class.
@@ -21,16 +21,36 @@ namespace DataAccess.Model
         /// </summary>
         public Word()
         {
+            Letters = new List<Letter>();
+        }
 
+        public Word(string letters)
+        {
+            Letters = letters.Select(l => new Letter()
+            {
+                Character = l.ToString(),
+            });
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Word"/> class.
         /// </summary>
         /// <param name="letters">The letters of the word in their correct order.</param>
-        public Word(string letters)
+        public Word(IEnumerable<Letter> letters)
         {
             Letters = letters;
+        }
+
+        public string GetLettersAsString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            foreach (Letter letter in Letters)
+            {
+                stringBuilder.Append(letter.Character);
+            }
+
+            return stringBuilder.ToString();
         }
     }
 }
