@@ -17,13 +17,17 @@
         </behaviors:EventTrigger>
     </behaviors:Interaction.Triggers>
 
-    <DockPanel>
+    <DockPanel
+        RenderTransformOrigin="0.5, 0.5">
+
         <!--DockPanel for Buttons-->
         <DockPanel
+            LastChildFill="False"
             DockPanel.Dock="Right">
+            
             <Button
                 Content="New game"
-                VerticalAlignment="Top"
+                DockPanel.Dock="Top"
                 IsEnabled="{Binding GameSessionViewModel.GameEnded}"
                 Style="{StaticResource MainPageStyle}"
                 Command="{Binding GameSessionViewModel.ResetGameCommand}">
@@ -38,7 +42,25 @@
                     </behaviors:EventTrigger>
                 </behaviors:Interaction.Triggers>
             </Button>
-            
+
+            <!--solution hint for demonstration purposes-->
+            <ItemsControl
+                DockPanel.Dock="Bottom"
+                HorizontalAlignment="Right"
+                Visibility="{Binding ElementName=WinMessage, Path=Visibility, Converter={converter:InvertedVisibilityConverter}}"
+                ItemsSource="{Binding GameSessionViewModel.Solution.Letters}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Character}" FontSize="25" Foreground="Yellow"></TextBlock>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"></StackPanel>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+
         </DockPanel>
         <Grid
             IsEnabled="{Binding GameSessionViewModel.GameEnded, Converter={converter:InvertedBoolConverter}}">
@@ -150,5 +172,23 @@
                 </Grid>
             </Grid>
         </Grid>
+
+        <DockPanel.RenderTransform>
+            <RotateTransform x:Name="ExampleAnimatedTransform" Angle="0" />
+        </DockPanel.RenderTransform>
+
+        <DockPanel.Triggers>
+            <!-- Animates the rectangle's opacity. -->
+            <EventTrigger RoutedEvent="DockPanel.PreviewMouseRightButtonDown">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetName="ExampleAnimatedTransform"
+                            Storyboard.TargetProperty="(RotateTransform.Angle)"
+                            From="0.0" To="360" Duration="0:0:5" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </DockPanel.Triggers>
     </DockPanel>
 </UserControl>

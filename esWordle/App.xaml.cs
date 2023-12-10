@@ -20,13 +20,13 @@ namespace esWordle
 
             #region View
             services.AddSingleton<GameView>();
-            services.AddTransient<OptionsView>();
+            services.AddSingleton<OptionsView>();
             #endregion
 
             #region ViewModel
             services.AddSingleton<MainWindowViewModel>();
             services.AddSingleton<GameViewModel>();
-            services.AddTransient<OptionsViewModel>();
+            services.AddSingleton<OptionsViewModel>();
             services.AddSingleton<WordleGridViewModel>();
             services.AddTransient<WordInputViewModel>();
             services.AddSingleton<GameSessionViewModel>();
