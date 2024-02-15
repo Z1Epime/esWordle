@@ -24,7 +24,6 @@
             <Button
                 Content="New game"
                 VerticalAlignment="Top"
-                IsEnabled="{Binding GameSessionViewModel.GameEnded}"
                 Style="{StaticResource MainPageStyle}"
                 Command="{Binding GameSessionViewModel.ResetGameCommand}">
                 <behaviors:Interaction.Triggers>

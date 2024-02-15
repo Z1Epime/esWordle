@@ -15,18 +15,13 @@
         <DockPanel DockPanel.Dock="Left" Background="Transparent" VerticalAlignment="Stretch" HorizontalAlignment="Left">
             <StackPanel VerticalAlignment="Bottom">
                 <Button Name="btPlay" Content="Play" Style="{StaticResource MainPageStyle}"/>
-                <Button Name="btOptions" Content="Options" Style="{StaticResource MainPageStyle}"/>
                 <Button Name="btExit" Content="Exit" Style="{StaticResource MainPageStyle}"/>
                 <!--#region Behavior-->
                 <behaviors:Interaction.Triggers>
                     <behaviors:EventTrigger EventName="Click" SourceObject="{Binding ElementName=btPlay}">
                         <behaviors:InvokeCommandAction Command="{Binding GoToGameCommand}"/>
                     </behaviors:EventTrigger>
-                    
-                    <behaviors:EventTrigger EventName="Click" SourceObject="{Binding ElementName=btOptions}">
-                        <behaviors:InvokeCommandAction Command="{Binding GoToOptionsCommand}"/>
-                    </behaviors:EventTrigger>
-                    
+
                     <behaviors:EventTrigger EventName="Click" SourceObject="{Binding ElementName=btExit}">
                         <behaviors:InvokeCommandAction Command="{Binding ExitCommand}"/>
                     </behaviors:EventTrigger>

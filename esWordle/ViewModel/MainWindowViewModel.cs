@@ -24,12 +24,6 @@ namespace esWordle.ViewModel
         }
 
         [RelayCommand]
-        private void GoToOptions()
-        {
-            NavigationService.NavigateTo<OptionsViewModel>();
-        }
-
-        [RelayCommand]
         private void Exit()
         {
             Application.Current.Shutdown();
